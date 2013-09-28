@@ -19,13 +19,13 @@ public class JeuControlleur {
     private Collection<Integer> randomAlarmNumbers = new ArrayList<Integer>();
 
     // CONSTANTES CHEMINS DES FICHIERS
-    private final String HORNTUNE = "res/Horn_Tune.wav";
-    private final String DANSE_DU_VENTRE = "res/Danse_du_ventre.wav";
-    private final String CALL_TO_ARMS = "res/Call_to_Arms.wav";
-    private final String TOUR_DE_FRANCE = "res/Tour _de_France.wav";
-    private final String AIR_RAID_2 = "res/Air_Raid_2.wav";
-    private final String POUET_POUET = "res/Pouet_pouet.wav";
-    private final String WOW = "res/Wow.wav";
+    private final String HORNTUNE = "DrinkAlarm/res/Horn_Tune.wav";
+    private final String DANSE_DU_VENTRE = "DrinkAlarm/res/Danse_du_ventre.wav";
+    private final String CALL_TO_ARMS = "DrinkAlarm/res/Call_to_Arms.wav";
+    private final String TOUR_DE_FRANCE = "DrinkAlarm/res/Tour _de_France.wav";
+    private final String AIR_RAID_2 = "DrinkAlarm/res/Air_Raid_2.wav";
+    private final String POUET_POUET = "DrinkAlarm/res/Pouet_pouet.wav";
+    private final String WOW = "DrinkAlarm/res/Wow.wav";
 
     /**
      * Méthode permettant d'intialiser les paramètres du jeu :
@@ -140,12 +140,11 @@ public class JeuControlleur {
      * Nouveau tour de jeu. Renvoi l'action à faire
      * @return String
      */
-    public String tour() {
+    public Action tour() {
         Action action;
         Iterator<Action> iterator = this.actions.iterator();
 
         int randomNumber = (int) (Math.random() * 100000000000.0 / 1000000000.0);
-        System.out.println(mode.getLibelle());
 
         if(testDrink(randomAlarmNumbers, mode.getChance(), randomNumber)){
             // System.out.println("on peut boire !");
@@ -154,11 +153,11 @@ public class JeuControlleur {
                 action = iterator.next();
 
                 if (testDrink(randomAlarmNumbers, action.getChance(mode), randomNumber)) {
-                    return action.play(joueurs);
+                    return action;
                 }
             }
         }
-        return "";
+        return null;
     }
 
 }

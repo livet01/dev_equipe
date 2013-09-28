@@ -2,7 +2,9 @@ package org.drinkalarm.essai;
 
 import org.drinkalarm.application.JeuControlleur;
 import org.drinkalarm.metier.Joueur;
+import org.drinkalarm.presentation.DrinkAlarmMainFrame;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -11,15 +13,9 @@ import java.util.ArrayList;
 public class DrinkAlarm {
     public DrinkAlarm() {
         JeuControlleur ctr = new JeuControlleur();
-        ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
-        Joueur j1 = new Joueur();
-        j1.setNom("Toto");
-        joueurs.add(j1);
-        ctr.initialiser(joueurs,"hard");
-        System.out.println(ctr.tour());
     }
 
     public static void main(String[] args) {
-        new DrinkAlarm();
+        new DrinkAlarmMainFrame();
     }
 }
