@@ -18,6 +18,12 @@ public class JeuControlleur {
     private Mode mode;
     private Collection<Integer> randomAlarmNumbers = new ArrayList<Integer>();
 
+    // Diff√©rents mode de jeu
+    private Mode soft = new Mode("Soft",20F);
+    private Mode medium = new Mode("Medium",30F);
+    private Mode hard = new Mode("Hard",50F);
+    private Mode legend = new Mode("Legend",80F);
+
     // CONSTANTES CHEMINS DES FICHIERS
     private final String HORNTUNE = "DrinkAlarm/res/Horn_Tune.wav";
     private final String DANSE_DU_VENTRE = "DrinkAlarm/res/Danse_du_ventre.wav";
@@ -28,31 +34,23 @@ public class JeuControlleur {
     private final String WOW = "DrinkAlarm/res/Wow.wav";
 
     /**
-     * MÈthode permettant d'intialiser les paramËtres du jeu :
-     * - les diffÈrents modes
-     * - les diffÈrentes actions
-     * Insertion de la liste des joueurs et du mode de la partie
-     * @param j Liste des joueurs
+     * M√©thode permettant d'intialiser les param√®tres du jeu :
+     * - les diff√©rents modes
+     * - les diff√©rentes actions
+     * Insertion du mode de la partie
      * @param mode Mode de la partie
      */
-    public void initialiser(ArrayList<Joueur> j, String mode) {
-        // Attribution des joueurs
-        this.joueurs = j;
-
-        Mode soft = new Mode("Soft",20F);
-        Mode medium = new Mode("Medium",30F);
-        Mode hard = new Mode("Hard",50F);
-        Mode legend = new Mode("Legend",80F);
+    public JeuControlleur(String mode) {
 
         // Attribution des actions
-        Action a = new Action("... OlÈ !!!! Une gorgÈe pour TOUT le monde",HORNTUNE);
+        Action a = new Action("... Ol√© !!!! Une gorg√©e pour TOUT le monde",HORNTUNE);
         a.setChance(soft, 40F);
         a.setChance(medium, 37F);
         a.setChance(hard, 30F);
         a.setChance(legend,50F);
         this.actions.add(a);
 
-        a = new Action("Une gorgÈe pour le BIZUT",DANSE_DU_VENTRE);
+        a = new Action("Une gorg√©e pour le BIZUT",DANSE_DU_VENTRE);
         a.setChance(soft, 20F);
         a.setChance(medium,23F);
         a.setChance(hard, 20F);
@@ -82,7 +80,7 @@ public class JeuControlleur {
         a.setChance(legend, 35F);
         this.actions.add(a);
 
-        a = new Action(" gorgÈe(s) pour le bizut du ROI",TOUR_DE_FRANCE);
+        a = new Action(" gorg√©e(s) pour le bizut du ROI",TOUR_DE_FRANCE);
         a.setChance(soft, 5F);
         a.setChance(medium, 2F);
         a.setChance(hard,1F);
@@ -90,6 +88,18 @@ public class JeuControlleur {
         a.setGorgeRamdom(true);
         this.actions.add(a);
 
+        setMode(mode);
+    }
+
+    public JeuControlleur(){
+        new JeuControlleur("medium");
+    }
+
+    public void addJoueur(String nom) {
+        this.joueurs.add(new Joueur(nom));
+    }
+
+    public void setMode(String mode) {
         // Attribution du mode de jeu
         switch (mode){
             case "soft":
@@ -110,7 +120,7 @@ public class JeuControlleur {
     }
 
     /**
-     * Teste de faÁon alÈatoire si le joueur joue l'action ou pas
+     * Teste de fa√ßon al√©atoire si le joueur joue l'action ou pas
      * @param collection
      * @param proba
      * @param randomNumber
@@ -121,7 +131,7 @@ public class JeuControlleur {
         int nb = 0;
 
         collection.clear();
-        // GÈnÈration alÈatoire de n nombres
+        // G√©n√©ration al√©atoire de n nombres
         int i = 0;
         while (i < proba) {
             nb = ((int) (Math.random() * 10000000000000.0 / 100000000000.0));
@@ -131,13 +141,13 @@ public class JeuControlleur {
             }
         }
 
-        // On regarde si le nombre gÈnÈrÈ est contenu dans la
+        // On regarde si le nombre g√©n√©r√© est contenu dans la
         // collection
         return collection.contains(randomNumber);
     }
 
     /**
-     * Nouveau tour de jeu. Renvoi l'action ‡ faire
+     * Nouveau tour de jeu. Renvoi l'action √† faire
      * @return String
      */
     public Action tour() {
@@ -148,7 +158,7 @@ public class JeuControlleur {
 
         if(testDrink(randomAlarmNumbers, mode.getChance(), randomNumber)){
             // System.out.println("on peut boire !");
-            // rÈpartition des nombres alÈatoires
+            // r√©partition des nombres al√©atoires
             while (iterator.hasNext()) {
                 action = iterator.next();
 
