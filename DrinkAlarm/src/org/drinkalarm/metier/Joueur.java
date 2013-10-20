@@ -8,12 +8,34 @@ public class Joueur {
     /**
      * Nom du joueur
      */
+
     private String nom;
 
     /**
      * Score
      */
     private Integer score = 0;
+
+    /**
+     * Actif
+     */
+    private Boolean actif = true;
+
+
+    public Joueur(String nom) {
+        this.nom = nom;
+    }
+
+    public Joueur(){}
+
+
+    public Boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(Boolean actif) {
+        this.actif = actif;
+    }
 
     public String getNom() {
         return nom;
