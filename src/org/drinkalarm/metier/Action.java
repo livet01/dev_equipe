@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Classe métier Action
+ * Classe mÃ©tier Action
  */
 public class Action {
     /**
@@ -16,7 +16,7 @@ public class Action {
     private String texte;
 
     /**
-     * Chemin du son à jouer
+     * Chemin du son Ã© jouer
      */
     private String cheminSon;
 
@@ -33,7 +33,7 @@ public class Action {
     private Integer nbParticipant = 0;
 
     /**
-     * Nombre de gorgé aléatoire
+     * Nombre de gorgÃ© alÃ©atoire
      */
     private Boolean gorgeRamdom = false;
 
@@ -83,7 +83,7 @@ public class Action {
     }
 
     /**
-     * Méthode qui choisi aléatoirement le joueur et le nombre de gorgé suivant les actions.
+     * MÃ©thode qui choisi alÃ©atoirement le joueur et le nombre de gorgÃ© suivant les actions.
      *
      * @param joueurs Liste des joueurs
      * @return String
@@ -92,9 +92,11 @@ public class Action {
         String retour = "";
 
         if(nbParticipant != 0){
-            int randomParticipants = (int) (Math.random() * ((joueurs.size() - 1) * 10000000 / 10000000));
-            // System.out.println("participant : " + randomParticipants);
-            retour = " : " + joueurs.get(randomParticipants).getNom();
+            if(joueurs.size() >= nbParticipant){
+                int randomParticipants = (int) (Math.random() * ((joueurs.size() - 1) * 10000000 / 10000000));
+                // System.out.println("participant : " + randomParticipants);
+                retour = " : " + joueurs.get(randomParticipants).getNom();
+            }
         }
         if(gorgeRamdom){
             int randomNbGorgees = (int) (Math.random() * (6 * 10000000 / 10000000));

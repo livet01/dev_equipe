@@ -1,7 +1,7 @@
 package org.drinkalarm.metier;
 
 /**
- * Classe métier Joueur
+ * Classe mÃ©tier Joueur
  */
 public class Joueur {
 

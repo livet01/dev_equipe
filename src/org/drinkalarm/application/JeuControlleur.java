@@ -25,13 +25,13 @@ public class JeuControlleur {
     private Mode legend = new Mode("Legend",80F);
 
     // CONSTANTES CHEMINS DES FICHIERS
-    private final String HORNTUNE = "DrinkAlarm/res/Horn_Tune.wav";
-    private final String DANSE_DU_VENTRE = "DrinkAlarm/res/Danse_du_ventre.wav";
-    private final String CALL_TO_ARMS = "DrinkAlarm/res/Call_to_Arms.wav";
-    private final String TOUR_DE_FRANCE = "DrinkAlarm/res/Tour _de_France.wav";
-    private final String AIR_RAID_2 = "DrinkAlarm/res/Air_Raid_2.wav";
-    private final String POUET_POUET = "DrinkAlarm/res/Pouet_pouet.wav";
-    private final String WOW = "DrinkAlarm/res/Wow.wav";
+    private final String HORNTUNE = "DrinkAlarm/res/horn_tune.wav";
+    private final String DANSE_DU_VENTRE = "DrinkAlarm/res/danse_du_ventre.wav";
+    private final String CALL_TO_ARMS = "DrinkAlarm/res/call_to_arms.wav";
+    private final String TOUR_DE_FRANCE = "DrinkAlarm/res/tour_de_france.wav";
+    private final String AIR_RAID_2 = "DrinkAlarm/res/air_raid_2.wav";
+    private final String POUET_POUET = "DrinkAlarm/res/pouet_pouet.wav";
+    private final String WOW = "DrinkAlarm/res/wow.wav";
 
     /**
      * Méthode permettant d'intialiser les paramètres du jeu :
@@ -41,6 +41,7 @@ public class JeuControlleur {
      * @param mode Mode de la partie
      */
     public JeuControlleur(String mode) {
+        joueurs = new ArrayList<Joueur>();
 
         // Attribution des actions
         Action a = new Action("... Olé !!!! Une gorgée pour TOUT le monde",HORNTUNE);
@@ -101,21 +102,20 @@ public class JeuControlleur {
 
     public void setMode(String mode) {
         // Attribution du mode de jeu
-        switch (mode){
-            case "soft":
-                this.mode = soft;
-                break;
-            case "medium":
-                this.mode = medium;
-                break;
-            case "hard":
-                this.mode = hard;
-                break;
-            case "legend":
-                this.mode = legend;
-                break;
-            default:
-                this.mode = medium;
+        if (mode.equals("soft")) {
+            this.mode = soft;
+
+        } else if (mode.equals("medium")) {
+            this.mode = medium;
+
+        } else if (mode.equals("hard")) {
+            this.mode = hard;
+
+        } else if (mode.equals("legend")) {
+            this.mode = legend;
+
+        } else {
+            this.mode = medium;
         }
     }
 
@@ -157,7 +157,7 @@ public class JeuControlleur {
         int randomNumber = (int) (Math.random() * 100000000000.0 / 1000000000.0);
 
         if(testDrink(randomAlarmNumbers, mode.getChance(), randomNumber)){
-            // System.out.println("on peut boire !");
+            //System.out.println("on peut boire !");
             // répartition des nombres aléatoires
             while (iterator.hasNext()) {
                 action = iterator.next();
@@ -170,4 +170,15 @@ public class JeuControlleur {
         return null;
     }
 
+    public ArrayList<Joueur> getJoueurs() {
+        return joueurs;
+    }
+
+    public ArrayList<String> getJoueursAsString(){
+        ArrayList<String> retour = new ArrayList<String>();
+        for(Joueur j : joueurs){
+            retour.add(j.getNom());
+        }
+        return retour;
+    }
 }

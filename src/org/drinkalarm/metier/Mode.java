@@ -1,7 +1,7 @@
 package org.drinkalarm.metier;
 
 /**
- * Classe métier Mode
+ * Classe mÃ©tier Mode
  */
 public class Mode {
 

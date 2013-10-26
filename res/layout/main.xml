@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <TextView
+
+    <android.support.v4.widget.DrawerLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <!-- The navigation drawer -->
+        <ListView android:id="@+id/left_drawer"
+                  android:layout_width="240dp"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="start"
+                  android:choiceMode="singleChoice"
+                  android:divider="#666"
+                  android:dividerHeight="1dp"
+                  android:background="#333"
+                  android:paddingLeft="15sp"
+                  android:paddingRight="15sp"
+                />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+            <RadioGroup
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Soft"
+                        android:id="@+id/soft"
+                        android:checked="false"/>
+
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medium"
+                        android:id="@+id/medium"
+                        android:checked="false"/>
+
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hard"
+                        android:id="@+id/hard"
+                        android:layout_gravity="center"
+                        android:checked="false"/>
+
+                <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Legend"
+                        android:id="@+id/legend"
+                        android:layout_gravity="center"
+                        android:checked="false"/>
+            </RadioGroup>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/init_compteur"
+                    android:id="@+id/compteur"
+                    android:linksClickable="true"
+                    android:textSize="100dp"
+                    android:layout_gravity="center"/>
+
+            <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/listView"
+                    android:layout_gravity="center"/>
+        </LinearLayout>
+    </FrameLayout>
+    <ListView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
+            android:id="@+id/joueurs"
+            android:layout_gravity="center"
             />
-</LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
 
