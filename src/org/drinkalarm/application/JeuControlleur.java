@@ -19,10 +19,10 @@ public class JeuControlleur {
     private Collection<Integer> randomAlarmNumbers = new ArrayList<Integer>();
 
     // Différents mode de jeu
-    private Mode soft = new Mode("Soft",20F);
-    private Mode medium = new Mode("Medium",30F);
-    private Mode hard = new Mode("Hard",50F);
-    private Mode legend = new Mode("Legend",80F);
+    private Mode soft = new Mode("soft",20F);
+    private Mode medium = new Mode("medium",30F);
+    private Mode hard = new Mode("hard",50F);
+    private Mode legend = new Mode("legend",80F);
 
     // CONSTANTES CHEMINS DES FICHIERS
     private final String HORNTUNE = "DrinkAlarm/res/horn_tune.wav";
@@ -180,5 +180,9 @@ public class JeuControlleur {
             retour.add(j.getNom());
         }
         return retour;
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 }

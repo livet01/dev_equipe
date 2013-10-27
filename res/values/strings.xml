@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DrinkAlarm</string>
+    <string name="joueurs">Joueurs</string>
     <string name="log">DrinkAlarm est en sommeil</string>
     <string name="init_compteur">00:00</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="soft">Soft</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="legend">Legend</string>
 </resources>
